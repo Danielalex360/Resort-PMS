@@ -1,0 +1,122 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                    RESORT PMS - DEPLOY COMMANDS                      ║
+║                      Copy & Paste These Commands                     ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ METHOD 1: VERCEL (RECOMMENDED - 2 MINUTES)                          │
+└─────────────────────────────────────────────────────────────────────┘
+
+Step 1: Install Vercel CLI
+    npm install -g vercel
+
+Step 2: Login to Vercel
+    vercel login
+
+Step 3: Deploy
+    vercel
+
+Step 4: Add Environment Variables
+    vercel env add VITE_SUPABASE_URL
+    (Paste: https://oncdtzhivsgsjcpidtox.supabase.co)
+
+    vercel env add VITE_SUPABASE_ANON_KEY
+    (Paste: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uY2R0emhpdnNnc2pjcGlkdG94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1OTcwOTAsImV4cCI6MjA3ODE3MzA5MH0.ynX7pM9ioLRTC5b5RGCyc91CkRowl-XnEgXe7b5Zxz8)
+
+Step 5: Deploy to Production
+    vercel --prod
+
+✅ DONE! Your app is live!
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ METHOD 2: NETLIFY                                                    │
+└─────────────────────────────────────────────────────────────────────┘
+
+Step 1: Install Netlify CLI
+    npm install -g netlify-cli
+
+Step 2: Login
+    netlify login
+
+Step 3: Initialize
+    netlify init
+
+Step 4: Build
+    npm run build
+
+Step 5: Deploy
+    netlify deploy --prod --dir=dist
+
+✅ DONE! Add environment variables in Netlify dashboard
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ AFTER DEPLOYMENT: CONFIGURE SUPABASE                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+1. Go to: https://supabase.com/dashboard/project/oncdtzhivsgsjcpidtox/auth/url-configuration
+
+2. Set Site URL to: YOUR_DEPLOYED_URL (e.g., https://resort-pms.vercel.app)
+
+3. Add to Redirect URLs: YOUR_DEPLOYED_URL/** (e.g., https://resort-pms.vercel.app/**)
+
+✅ DONE!
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ FIRST TIME SETUP: CREATE YOUR ACCOUNT                               │
+└─────────────────────────────────────────────────────────────────────┘
+
+1. Visit your deployed app
+
+2. Click "Sign Up"
+
+3. Enter email and password
+
+4. Go to Supabase SQL Editor:
+   https://supabase.com/dashboard/project/oncdtzhivsgsjcpidtox/sql
+
+5. Open file: FIRST_TIME_SETUP.sql
+
+6. Follow the instructions to:
+   - Get your user ID
+   - Create your resort
+   - Assign owner role
+
+✅ DONE! Log in and start using your PMS!
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                          QUICK REFERENCE                             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Your Supabase Project ID:  oncdtzhivsgsjcpidtox
+Your Supabase URL:         https://oncdtzhivsgsjcpidtox.supabase.co
+Supabase Dashboard:        https://supabase.com/dashboard/project/oncdtzhivsgsjcpidtox
+
+Your App URL:              (Will be shown after deployment)
+
+Environment Variables Needed:
+  - VITE_SUPABASE_URL
+  - VITE_SUPABASE_ANON_KEY
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                     TROUBLESHOOTING                                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Problem: Can't log in
+Solution: Make sure you've run the FIRST_TIME_SETUP.sql script
+
+Problem: No menu items showing
+Solution: Check user_roles table has your user with 'owner' role
+
+Problem: Environment variables not working
+Solution: Make sure they're set in your deployment platform (Vercel/Netlify dashboard)
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                          YOU'RE READY!                               ║
+║           Just run the commands above and you're live! 🚀            ║
+╚══════════════════════════════════════════════════════════════════════╝
